@@ -8,6 +8,9 @@
 
 body {
   @apply bg-background text-body font-sans antialiased;
+  background-image: radial-gradient(ellipse at top left, rgba(99, 102, 241, 0.22), transparent 55%),
+    radial-gradient(ellipse at bottom right, rgba(34, 211, 238, 0.18), transparent 55%);
+  background-attachment: fixed;
 }
 
 a {
@@ -20,4 +23,30 @@ a {
 
 .section-subtitle {
   @apply text-base md:text-lg text-muted max-w-2xl;
+}
+
+@layer utilities {
+  .bg-grid-soft {
+    background-image: linear-gradient(rgba(148, 163, 184, 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(148, 163, 184, 0.08) 1px, transparent 1px);
+    background-size: 120px 120px;
+    mask-image: radial-gradient(circle at center, rgba(255, 255, 255, 0.9), transparent 70%);
+  }
+
+  .glow-border {
+    position: relative;
+  }
+
+  .glow-border::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.35), rgba(34, 211, 238, 0.15));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
 }

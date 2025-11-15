@@ -1,6 +1,7 @@
 import { FormEvent, useState } from 'react';
 import { SectionHeader } from '../components/SectionHeader';
 import { Button } from '../components/Button';
+import { AnimatedSection } from '../components/AnimatedSection';
 import { usePageMetadata } from '../hooks/usePageMetadata';
 
 type FormulaireContact = {
@@ -65,35 +66,37 @@ export function Contact() {
   };
 
   return (
-    <div className="flex flex-col gap-16">
-      <SectionHeader
-        titre="Contactez-nous"
-        sousTitre="Décrivez-nous vos enjeux, nous vous recontactons sous 24 h ouvrées pour organiser un premier échange."
-        align="center"
-      />
-      <div className="grid gap-10 rounded-3xl border border-border bg-surface/80 p-10 md:grid-cols-2">
+    <div className="flex flex-col gap-16 md:gap-24">
+      <AnimatedSection>
+        <SectionHeader
+          titre="Contactez-nous"
+          sousTitre="Décrivez-nous vos enjeux, nous vous recontactons sous 24 h ouvrées pour organiser un premier échange."
+          align="center"
+          accent="Prise de contact"
+        />
+      </AnimatedSection>
+      <AnimatedSection className="grid gap-10 rounded-[3rem] border border-white/5 bg-background/70 p-10 shadow-[0_32px_110px_rgba(8,15,40,0.55)] md:grid-cols-2">
         <div className="space-y-6">
           <h3 className="text-2xl font-semibold text-heading">Parlons de votre projet</h3>
           <p className="text-muted">
-            Que vous souhaitiez lancer un nouveau produit, moderniser un outil métier ou renforcer votre équipe, nos experts sont prêts
-            à vous accompagner.
+            Que vous souhaitiez lancer un nouveau produit, moderniser un outil métier ou renforcer votre équipe, nos experts sont prêts à vous accompagner.
           </p>
           <ul className="space-y-3 text-body">
             <li className="flex items-start gap-3">
-              <span className="mt-1 h-2 w-2 rounded-full bg-primary" aria-hidden />
+              <span className="mt-1 h-2 w-2 rounded-full bg-gradient-to-r from-primary to-accent" aria-hidden />
               <span>Réponse personnalisée sous 24 heures ouvrées</span>
             </li>
             <li className="flex items-start gap-3">
-              <span className="mt-1 h-2 w-2 rounded-full bg-primary" aria-hidden />
+              <span className="mt-1 h-2 w-2 rounded-full bg-gradient-to-r from-primary to-accent" aria-hidden />
               <span>Signature d’un accord de confidentialité si nécessaire</span>
             </li>
             <li className="flex items-start gap-3">
-              <span className="mt-1 h-2 w-2 rounded-full bg-primary" aria-hidden />
+              <span className="mt-1 h-2 w-2 rounded-full bg-gradient-to-r from-primary to-accent" aria-hidden />
               <span>Atelier de cadrage offert pour les projets stratégiques</span>
             </li>
           </ul>
-          <div className="rounded-3xl bg-surface/60 p-6">
-            <p className="text-sm uppercase tracking-wide text-secondary">Nous joindre directement</p>
+          <div className="rounded-3xl border border-white/5 bg-surface/70 p-6">
+            <p className="text-xs uppercase tracking-[0.35em] text-secondary/80">Nous joindre directement</p>
             <p className="mt-3 text-heading">contact@emsoftwaresystem.com</p>
             <p className="text-muted">+33 1 86 95 32 10</p>
           </div>
@@ -109,7 +112,7 @@ export function Contact() {
               type="text"
               value={formulaire.nom}
               onChange={(event) => setFormulaire({ ...formulaire, nom: event.target.value })}
-              className="mt-2 w-full rounded-2xl border border-border bg-background px-4 py-3 text-body focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/40"
+              className="mt-2 w-full rounded-2xl border border-border/70 bg-background px-4 py-3 text-body shadow-inner focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/40"
               required
               aria-invalid={Boolean(erreurs.nom)}
               aria-describedby={erreurs.nom ? 'erreur-nom' : undefined}
@@ -130,7 +133,7 @@ export function Contact() {
               type="email"
               value={formulaire.email}
               onChange={(event) => setFormulaire({ ...formulaire, email: event.target.value })}
-              className="mt-2 w-full rounded-2xl border border-border bg-background px-4 py-3 text-body focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/40"
+              className="mt-2 w-full rounded-2xl border border-border/70 bg-background px-4 py-3 text-body shadow-inner focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/40"
               required
               aria-invalid={Boolean(erreurs.email)}
               aria-describedby={erreurs.email ? 'erreur-email' : undefined}
@@ -151,7 +154,7 @@ export function Contact() {
               type="text"
               value={formulaire.societe}
               onChange={(event) => setFormulaire({ ...formulaire, societe: event.target.value })}
-              className="mt-2 w-full rounded-2xl border border-border bg-background px-4 py-3 text-body focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/40"
+              className="mt-2 w-full rounded-2xl border border-border/70 bg-background px-4 py-3 text-body shadow-inner focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/40"
               required
               aria-invalid={Boolean(erreurs.societe)}
               aria-describedby={erreurs.societe ? 'erreur-societe' : undefined}
@@ -172,7 +175,7 @@ export function Contact() {
               rows={5}
               value={formulaire.message}
               onChange={(event) => setFormulaire({ ...formulaire, message: event.target.value })}
-              className="mt-2 w-full rounded-2xl border border-border bg-background px-4 py-3 text-body focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/40"
+              className="mt-2 w-full rounded-2xl border border-border/70 bg-background px-4 py-3 text-body shadow-inner focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/40"
               required
               aria-invalid={Boolean(erreurs.message)}
               aria-describedby={erreurs.message ? 'erreur-message' : undefined}
@@ -192,7 +195,7 @@ export function Contact() {
             </p>
           ) : null}
         </form>
-      </div>
+      </AnimatedSection>
     </div>
   );
 }

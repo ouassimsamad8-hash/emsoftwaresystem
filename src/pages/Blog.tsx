@@ -1,5 +1,6 @@
 import { SectionHeader } from '../components/SectionHeader';
 import { Button } from '../components/Button';
+import { AnimatedSection } from '../components/AnimatedSection';
 import { usePageMetadata } from '../hooks/usePageMetadata';
 
 const billets = [
@@ -27,24 +28,27 @@ export function Blog() {
   });
 
   return (
-    <div className="flex flex-col gap-16">
-      <SectionHeader
-        titre="Blog"
-        sousTitre="Bientôt disponible : nos retours d’expérience, analyses technologiques et bonnes pratiques."
-        align="center"
-        action={
-          <Button to="/contact" variant="secondary">
-            Être informé de la publication
-          </Button>
-        }
-      />
+    <div className="flex flex-col gap-16 md:gap-20">
+      <AnimatedSection>
+        <SectionHeader
+          titre="Blog"
+          sousTitre="Bientôt disponible : nos retours d’expérience, analyses technologiques et bonnes pratiques."
+          align="center"
+          accent="Ressources"
+          action={
+            <Button to="/contact" variant="secondary">
+              Être informé de la publication
+            </Button>
+          }
+        />
+      </AnimatedSection>
       <div className="grid gap-6 md:grid-cols-3">
-        {billets.map((billet) => (
-          <article key={billet.titre} className="rounded-3xl border border-border bg-surface/70 p-8">
+        {billets.map((billet, index) => (
+          <AnimatedSection key={billet.titre} delay={index * 80} className="rounded-3xl border border-white/5 bg-surface/80 p-8">
             <h3 className="text-xl font-semibold text-heading">{billet.titre}</h3>
             <p className="mt-3 text-muted">{billet.resume}</p>
             <p className="mt-6 text-sm text-secondary">Publication prochaine</p>
-          </article>
+          </AnimatedSection>
         ))}
       </div>
     </div>
