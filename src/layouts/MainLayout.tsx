@@ -4,6 +4,7 @@ import clsx from 'clsx';
 import { navigationLinks } from '../data/navigation';
 import { Button } from '../components/Button';
 import { AuroraBackground } from '../components/AuroraBackground';
+import { FeedbackWidget } from '../components/FeedbackWidget';
 
 export function MainLayout() {
   const [menuOuvert, setMenuOuvert] = useState(false);
@@ -114,6 +115,8 @@ export function MainLayout() {
           </div>
         </footer>
       </div>
+      
+      <FeedbackWidget />
     </div>
   );
 }
