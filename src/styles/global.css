@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  @apply bg-background text-body font-sans antialiased;
+}
+
+a {
+  @apply text-primary hover:text-primary-light transition-colors;
+}
+
+.section-title {
+  @apply text-3xl md:text-4xl font-bold text-heading font-display mb-6;
+}
+
+.section-subtitle {
+  @apply text-base md:text-lg text-muted max-w-2xl;
+}
